@@ -24,5 +24,6 @@ RUN apt-get -qq update && \
     apt-get install -y texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra texlive-xetex latexmk xindy
 
 # Setup Environment
-COPY environment.yml ~/
-RUN conda install -f ~/environment.yml && conda activate quantecon
+COPY environment.yml ~/environment.yml
+RUN conda install -f ~/environment.yml
+RUN conda activate quantecon
