@@ -26,4 +26,4 @@ RUN apt-get -qq update && \
 # Setup Environment
 COPY environment.yml .
 RUN conda env create -f environment.yml
-RUN conda activate quantecon
+RUN conda init bash && conda activate quantecon
