@@ -19,10 +19,10 @@ RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86
 ENV PATH=$CONDA_DIR/bin:$PATH
 
 # Install LaTeX build system
-RUN sudo apt-get -qq update && \
+RUN apt-get -qq update && \
     export DEBIAN_FRONTEND=noninteractive && \
-    sudo apt-get install -y tzdata && \
-    sudo apt-get install -y texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra texlive-xetex latexmk xindy dvipng ghostscript cm-super
+    apt-get install -y tzdata && \
+    apt-get install -y texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra texlive-xetex latexmk xindy dvipng ghostscript cm-super
 
 # Setup Environment
 COPY environment.yml .
