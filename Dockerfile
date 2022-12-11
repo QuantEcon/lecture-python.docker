@@ -21,7 +21,7 @@ ENV PATH=$CONDA_DIR/bin:$PATH
 RUN apt-get -qq update && \
     export DEBIAN_FRONTEND=noninteractive && \
     apt-get install -y tzdata && \
-    apt-get install -y texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra texlive-xetex latexmk xindy
+    apt-get install -y texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra texlive-xetex latexmk xindy dvipng ghostscript cm-super
 
 # Setup Environment
 COPY environment.yml .
