@@ -17,5 +17,5 @@ dependencies:
     - array-to-latex
     - prettytable
     # Docker Requirements
-     - pytz
+    - pytz
 
