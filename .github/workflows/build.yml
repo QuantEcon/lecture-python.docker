@@ -27,6 +27,6 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v3.2.0
         with:
-          context: .
+          context: py39-anaconda-2022-10-jb-0.12.1
           push: true
-          tags: mmcky/quantecon-lecture-python:py39-anaconda-2022-10
+          tags: mmcky/quantecon-lecture-python:py39-anaconda-2022-10-jb-0.12.1
