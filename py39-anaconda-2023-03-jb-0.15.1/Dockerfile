@@ -1,14 +1,18 @@
-FROM nvidia/cuda:11.8.0-devel-ubuntu22.04
+FROM nvidia/cuda:11.8.0-devel-ubuntu20.04
 
 # Install base utilities
 RUN apt-get update && \
     apt-get install -y sudo
 RUN sudo apt-get update && \
-    sudo apt-get install -y build-essential  && \
+    sudo apt-get install -y build-essential && \
     sudo apt-get install -y wget && \
     sudo apt-get install -y git && \
+    sudo apt-get install -y python3-pip && \
     sudo apt-get clean && \
     rm -rf /var/lib/apt/lists/*
+
+# Install JAX
+RUN pip install "jax[cuda11_cudnn86]" -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
 
 # Install miniconda
 ENV CONDA_DIR /opt/conda
