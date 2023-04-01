@@ -17,6 +17,7 @@ dependencies:
     - array-to-latex
     - prettytable
     - kaleido
+    - arviz
     # Docker Requirements
     - pytz
 
