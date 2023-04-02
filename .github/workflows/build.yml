@@ -32,9 +32,9 @@ jobs:
       #     push: true
       #     tags: mmcky/quantecon-lecture-python:py39-anaconda-2022-10-jb-0.15.1
       
-      - name: Build & Push (py310-anaconda-2023-03-jb-0.15.1)
+      - name: Build & Push (cuda-12.1.0-anaconda-2023-03-py310)
         uses: docker/build-push-action@v3.2.0
         with:
-          context: py310-anaconda-2023-03-jb-0.15.1
+          context: cuda-12.1.0-anaconda-2023-03-py310
           push: true
-          tags: mmcky/quantecon-lecture-python:py310-anaconda-2023-03-jb-0.15.1
+          tags: mmcky/quantecon-lecture-python:cuda-12.1.0-anaconda-2023-03-py310

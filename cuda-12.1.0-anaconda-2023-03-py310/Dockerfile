@@ -1,4 +1,4 @@
-FROM nvidia/cuda:11.8.0-devel-ubuntu20.04
+FROM nvidia/cuda:12.1.0-devel-ubuntu20.04
 
 # Install base utilities
 RUN apt-get update && \
@@ -11,8 +11,11 @@ RUN sudo apt-get update && \
     sudo apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-# Install JAX
-RUN pip install "jax[cuda11_cudnn86]" -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
+# Install LaTeX build system
+RUN apt-get -qq update && \
+    export DEBIAN_FRONTEND=noninteractive && \
+    apt-get install -y tzdata && \
+    apt-get install -y texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra texlive-xetex latexmk xindy dvipng ghostscript cm-super
 
 # Install miniconda
 ENV CONDA_DIR /opt/conda
@@ -22,14 +25,11 @@ RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86
 # Put conda in path so we can use conda activate
 ENV PATH=$CONDA_DIR/bin:$PATH
 
-# Install LaTeX build system
-RUN apt-get -qq update && \
-    export DEBIAN_FRONTEND=noninteractive && \
-    apt-get install -y tzdata && \
-    apt-get install -y texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra texlive-xetex latexmk xindy dvipng ghostscript cm-super
-
 # Setup Environment
 COPY environment.yml .
 RUN conda env create -f environment.yml
 RUN echo "source activate quantecon" > ~/.bashrc
 ENV PATH /opt/conda/envs/quantecon/bin:$PATH
+
+# Install JAX
+RUN pip install --upgrade "jax[cuda12_pip]" -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
