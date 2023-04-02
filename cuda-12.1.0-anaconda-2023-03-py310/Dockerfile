@@ -8,11 +8,10 @@ RUN sudo apt-get update && \
     sudo apt-get install -y wget && \
     sudo apt-get install -y git && \
     sudo apt-get install -y python3-pip && \
+    # Install nvidia drivers
+    sudo apt-get install -y nvidia-driver-525 nvidia-dkms-525 \
     sudo apt-get clean && \
     rm -rf /var/lib/apt/lists/*
-
-# Install Driver v525
-RUN sudo apt-get install nvidia-driver-525 nvidia-dkms-525
 
 # Install LaTeX build system
 RUN apt-get -qq update && \
