@@ -12,9 +12,6 @@ RUN apt-get update && \
 # RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN apt-get install -y tzdata
 
-# Install nvidia drivers
-RUN sudo apt-get install -y nvidia-driver-525 nvidia-dkms-525
-
 # Install developer tools
 RUN apt-get install -y build-essential && \
     apt-get install -y wget && \
