@@ -12,10 +12,13 @@ RUN sudo apt-get update && \
     sudo apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
+# Install tzdata
+ARG DEBIAN_FRONTEND=noninteractive
+ENV TZ=Etc/UTC
+RUN apt-get install -y tzdata
+
 # Install LaTeX build system
 RUN apt-get -qq update && \
-    export DEBIAN_FRONTEND=noninteractive && \
-    apt-get install -y tzdata && \
     apt-get install -y texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra texlive-xetex latexmk xindy dvipng ghostscript cm-super
 
 # Install miniconda
