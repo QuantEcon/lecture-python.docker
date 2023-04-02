@@ -20,4 +20,6 @@ dependencies:
     - arviz
     # Docker Requirements
     - pytz
+    # Docutils Issue (https://github.com/mcmtroffaes/sphinxcontrib-bibtex/issues/322)
+    - docutils==0.17.1
 
