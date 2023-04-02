@@ -3,23 +3,25 @@ FROM nvidia/cuda:12.1.0-devel-ubuntu20.04
 # Install base utilities
 RUN apt-get update && \
     apt-get install -y sudo
-RUN sudo apt-get update && \
-    sudo apt-get install -y build-essential && \
-    sudo apt-get install -y wget && \
-    sudo apt-get install -y git && \
-    sudo apt-get install -y python3-pip && \
-    sudo apt-get install -y nvidia-driver-525 nvidia-dkms-525 && \
-    sudo apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
 
 # Install tzdata
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Etc/UTC
-RUN apt-get install -y tzdata
+RUN sudo apt-get install -y tzdata
+
+# Install developer tools and nvidia drivers
+RUN sudo apt-get install -y build-essential && \
+    sudo apt-get install -y wget && \
+    sudo apt-get install -y git && \
+    sudo apt-get install -y python3-pip && \
+    sudo apt-get install -y nvidia-driver-525 nvidia-dkms-525
 
 # Install LaTeX build system
-RUN apt-get -qq update && \
-    apt-get install -y texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra texlive-xetex latexmk xindy dvipng ghostscript cm-super
+RUN apt-get install -y texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra texlive-xetex latexmk xindy dvipng ghostscript cm-super
+
+# Clean apt
+RUN sudo apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 # Install miniconda
 ENV CONDA_DIR /opt/conda
