@@ -11,6 +11,9 @@ RUN sudo apt-get update && \
     sudo apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
+# Install Driver v525
+RUN sudo apt-get install nvidia-driver-525 nvidia-dkms-525
+
 # Install LaTeX build system
 RUN apt-get -qq update && \
     export DEBIAN_FRONTEND=noninteractive && \
