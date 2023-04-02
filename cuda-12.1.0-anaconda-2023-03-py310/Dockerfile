@@ -5,16 +5,17 @@ RUN apt-get update && \
     apt-get install -y sudo
 
 # Install tzdata
-ARG DEBIAN_FRONTEND=noninteractive
-ENV TZ=Etc/UTC
-RUN sudo apt-get install -y tzdata
+RUN export DEBIAN_FRONTEND=noninteractive && \
+    apt-get install -y tzdata
 
-# Install developer tools and nvidia drivers
-RUN sudo apt-get install -y build-essential && \
-    sudo apt-get install -y wget && \
-    sudo apt-get install -y git && \
-    sudo apt-get install -y python3-pip && \
-    sudo apt-get install -y nvidia-driver-525 nvidia-dkms-525
+# Install nvidia drivers
+RUN sudo apt-get install -y nvidia-driver-525 nvidia-dkms-525
+
+# Install developer tools
+RUN apt-get install -y build-essential && \
+    apt-get install -y wget && \
+    apt-get install -y git && \
+    apt-get install -y python3-pip
 
 # Install LaTeX build system
 RUN apt-get install -y texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra texlive-xetex latexmk xindy dvipng ghostscript cm-super
