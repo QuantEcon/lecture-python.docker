@@ -1,12 +1,16 @@
 FROM nvidia/cuda:12.1.0-devel-ubuntu20.04
 
+ENV DEBIAN_FRONTEND=noninteractive
+RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
+
 # Install base utilities
 RUN apt-get update && \
     apt-get install -y sudo
 
 # Install tzdata
-RUN export DEBIAN_FRONTEND=noninteractive && \
-    apt-get install -y tzdata
+# ENV TZ=Etc/UTC
+# RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+RUN apt-get install -y tzdata
 
 # Install nvidia drivers
 RUN sudo apt-get install -y nvidia-driver-525 nvidia-dkms-525
