@@ -39,10 +39,18 @@ jobs:
       #     push: true
       #     tags: mmcky/quantecon-lecture-python:cuda-12.1.0-anaconda-2023-03-py310
 
-      # Upgrade quantecon-book-theme==0.5.0
-      - name: Build & Push (cuda-12.1.0-anaconda-2023-03-py310-b)
+      # # Upgrade quantecon-book-theme==0.5.0
+      # - name: Build & Push (cuda-12.1.0-anaconda-2023-03-py310-b)
+      #   uses: docker/build-push-action@v3.2.0
+      #   with:
+      #     context: cuda-12.1.0-anaconda-2023-03-py310-b
+      #     push: true
+      #     tags: mmcky/quantecon-lecture-python:cuda-12.1.0-anaconda-2023-03-py310-b
+
+      # Upgrade quantecon-book-theme==0.5.1
+      - name: Build & Push (cuda-12.1.0-anaconda-2023-03-py310-c)
         uses: docker/build-push-action@v3.2.0
         with:
-          context: cuda-12.1.0-anaconda-2023-03-py310-b
+          context: cuda-12.1.0-anaconda-2023-03-py310-c
           push: true
-          tags: mmcky/quantecon-lecture-python:cuda-12.1.0-anaconda-2023-03-py310-b
+          tags: mmcky/quantecon-lecture-python:cuda-12.1.0-anaconda-2023-03-py310-c
