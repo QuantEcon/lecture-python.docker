@@ -55,7 +55,10 @@ jobs:
       #     push: true
       #     tags: mmcky/quantecon-lecture-python:cuda-12.1.0-anaconda-2023-03-py310-c
 
-      # Upgrade quantecon-book-theme==0.5.3
+      - name: Create more disk space
+        run: sudo rm -rf /usr/share/dotnet && sudo rm -rf /opt/ghc && sudo rm -rf "/usr/local/share/boost" && sudo rm -rf "$AGENT_TOOLSDIRECTORY"
+      
+        # Upgrade quantecon-book-theme==0.5.3 
       - name: Build & Push (cuda-12.1.0-anaconda-2023-03-py310-d)
         uses: docker/build-push-action@v3.2.0
         with:
