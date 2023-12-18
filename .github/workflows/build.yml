@@ -80,9 +80,16 @@ jobs:
       #     push: true
       #     tags: mmcky/quantecon-lecture-python:cuda-12.1.0-anaconda-2023-07-py310-b
 
-      - name: Build & Push (cuda-12.1.0-anaconda-2023-09-py311)
+      # - name: Build & Push (cuda-12.1.0-anaconda-2023-09-py311)
+      #   uses: docker/build-push-action@v3.2.0
+      #   with:
+      #     context: cuda-12.1.0-anaconda-2023-09-py311
+      #     push: true
+      #     tags: mmcky/quantecon-lecture-python:cuda-12.1.0-anaconda-2023-09-py311
+
+      - name: Build & Push (cuda-12.1.0-anaconda-2023-09-py311-b)
         uses: docker/build-push-action@v3.2.0
         with:
-          context: cuda-12.1.0-anaconda-2023-09-py311
+          context: cuda-12.1.0-anaconda-2023-09-py311-b
           push: true
-          tags: mmcky/quantecon-lecture-python:cuda-12.1.0-anaconda-2023-09-py311
+          tags: mmcky/quantecon-lecture-python:cuda-12.1.0-anaconda-2023-09-py311-b
