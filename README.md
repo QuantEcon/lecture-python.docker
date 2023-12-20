@@ -6,7 +6,7 @@ Docker Container to Support Building Python Lecture Series
 
 | name | Description |
 |------|-------------|
-| cuda-12.1.0-anaconda-2023-09-py311-b | CUDA 12.1 + CUDAnn, Anaconda 2023.09, Python 3.11 (quantecon-book-theme==0.7.0) + sphinx-reredirect |
+| cuda-12.1.0-anaconda-2023-09-py311-c | CUDA 12.1 + CUDAnn, Anaconda 2023.09, Python 3.11 (quantecon-book-theme==0.7.1 |
 
 
 
@@ -14,6 +14,7 @@ Docker Container to Support Building Python Lecture Series
 
 | name | Description |
 |------|-------------|
+| cuda-12.1.0-anaconda-2023-09-py311-b | CUDA 12.1 + CUDAnn, Anaconda 2023.09, Python 3.11 (quantecon-book-theme==0.7.0) + sphinx-reredirect |
 | cuda-12.1.0-anaconda-2023-09-py311 | CUDA 12.1 + CUDAnn, Anaconda 2023.09, Python 3.11 (quantecon-book-theme==0.6.0) |
 | cuda-12.1.0-anaconda-2023-07-py310-b | CUDA 12.1 + CUDAnn, Anaconda 2023.07, Python 3.10 (quantecon-book-theme==0.6.0) |
 | cuda-12.1.0-anaconda-2023-07-py310 | CUDA 12.1 + CUDAnn, Anaconda 2023.07, Python 3.10 (quantecon-book-theme==0.5.3) |
