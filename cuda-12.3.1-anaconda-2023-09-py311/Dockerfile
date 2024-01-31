@@ -41,4 +41,6 @@ RUN echo "source activate quantecon" > ~/.bashrc
 ENV PATH /opt/conda/envs/quantecon/bin:$PATH
 
 # Install JAX
+RUN nvcc --version
+RUN echo "$LD_LIBRARY_PATH"
 RUN pip install --upgrade "jax[cuda12_local]" -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
