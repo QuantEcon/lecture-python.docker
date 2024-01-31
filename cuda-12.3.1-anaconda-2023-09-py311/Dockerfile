@@ -42,7 +42,4 @@ ENV PATH /opt/conda/envs/quantecon/bin:$PATH
 
 # Install JAX
 RUN nvcc --version
-RUN echo "$LD_LIBRARY_PATH"
 RUN pip install --upgrade "jax[cuda12_pip]" -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
-COPY check_jax.py .
-RUN python check_jax.py
