@@ -41,9 +41,9 @@ RUN echo "source activate quantecon" > ~/.bashrc
 ENV PATH /opt/conda/envs/quantecon/bin:$PATH
 
 # Install JAX
-RUN nvidia-smi
 RUN nvcc --version
 RUN echo "$LD_LIBRARY_PATH"
 RUN pip install --upgrade "jax[cuda12_pip]" -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
+RUN nvidia-smi
 COPY check_jax.py .
 RUN python check_jax.py
