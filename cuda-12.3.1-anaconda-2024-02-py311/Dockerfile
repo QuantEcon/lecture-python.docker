@@ -15,8 +15,7 @@ RUN apt-get install -y tzdata
 # Install developer tools
 RUN apt-get install -y build-essential && \
     apt-get install -y wget && \
-    apt-get install -y git && \
-    apt-get install -y python3-pip
+    apt-get install -y git
 
 # Install LaTeX build system
 RUN apt-get install -y texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra texlive-xetex latexmk xindy dvipng ghostscript cm-super
@@ -39,6 +38,7 @@ COPY environment.yml .
 RUN conda env create -f environment.yml
 RUN echo "source activate quantecon" > ~/.bashrc
 ENV PATH /opt/conda/envs/quantecon/bin:$PATH
+ENV CONDA_DEFAULT_ENV quantecon
 
 # Install JAX
 RUN nvcc --version
