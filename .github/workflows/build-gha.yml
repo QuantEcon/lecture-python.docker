@@ -27,4 +27,4 @@ jobs:
       - name: Build & Push Container
         run: |
           docker tag $IMAGE_NAME $IMAGE_NAME:$TAG
-          docker push ghcr.io/QuantEcon/$IMAGE_NAME:$TAG
+          docker push ghcr.io/quantecon/$IMAGE_NAME:$TAG
