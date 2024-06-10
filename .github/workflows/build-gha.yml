@@ -16,8 +16,8 @@ jobs:
     steps:
       - name: Check out the repo
         uses: actions/checkout@v4
-      # - name: Create more disk space on Ubuntu
-      #   run: sudo rm -rf /usr/share/dotnet && sudo rm -rf /opt/ghc && sudo rm -rf "/usr/local/share/boost" && sudo rm -rf "$AGENT_TOOLSDIRECTORY"
+      - name: Create more disk space on Ubuntu
+        run: sudo rm -rf /usr/share/dotnet && sudo rm -rf /opt/ghc && sudo rm -rf "/usr/local/share/boost" && sudo rm -rf "$AGENT_TOOLSDIRECTORY"
       - name: Build image
         run: | 
           cd cuda-12.3.1-anaconda-2024-02-py311
