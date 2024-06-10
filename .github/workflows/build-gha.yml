@@ -26,5 +26,5 @@ jobs:
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
       - name: Build & Push Container
         run: |
-          docker tag $IMAGE_NAME $IMAGE_NAME:$TAG
+          docker tag ghcr.io/quantecon/$IMAGE_NAME $IMAGE_NAME:$TAG
           docker push ghcr.io/quantecon/$IMAGE_NAME:$TAG
