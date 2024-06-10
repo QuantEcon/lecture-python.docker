@@ -4,7 +4,7 @@ on: [pull_request]
 
 env: 
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
+  IMAGE_NAME: quantecon/lecture-python.docker
   TAG: cuda-12.3.1-anaconda-2024-02-py311
 
 jobs:
