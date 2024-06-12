@@ -1,130 +1,31 @@
-name: Build and Push Docker Containers
+name: Build and Push Docker Containers to GitHub Container Registry
 
 on:
   push:
     branches: [main]
 
+env: 
+  IMAGE_NAME: lecture-python-container
+  TAG: cuda-12.5.0-anaconda-2024-02-py311
+
 jobs:
   push_to_registry:
-    name: Push Docker image to Docker Hub
+    name: Push Docker image to GitHub Containers
+    permissions:
+      packages: write
+      contents: read
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
-        uses: actions/checkout@v3
-      
-      - name: Log in to Docker Hub
-        uses: docker/login-action@v2.1.0
-        with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-
-      # - name: Build & Push (py39-anaconda-2022-10-jb-0.12.1)
-      #   uses: docker/build-push-action@v3.2.0
-      #   with:
-      #     context: py39-anaconda-2022-10-jb-0.12.1
-      #     push: true
-      #     tags: mmcky/quantecon-lecture-python:py39-anaconda-2022-10-jb-0.12.1
-
-      # - name: Build & Push (py39-anaconda-2022-10-jb-0.15.1)
-      #   uses: docker/build-push-action@v3.2.0
-      #   with:
-      #     context: py39-anaconda-2022-10-jb-0.15.1
-      #     push: true
-      #     tags: mmcky/quantecon-lecture-python:py39-anaconda-2022-10-jb-0.15.1
-      
-      # - name: Build & Push (cuda-12.1.0-anaconda-2023-03-py310)
-      #   uses: docker/build-push-action@v3.2.0
-      #   with:
-      #     context: cuda-12.1.0-anaconda-2023-03-py310
-      #     push: true
-      #     tags: mmcky/quantecon-lecture-python:cuda-12.1.0-anaconda-2023-03-py310
-
-      # # Upgrade quantecon-book-theme==0.5.0
-      # - name: Build & Push (cuda-12.1.0-anaconda-2023-03-py310-b)
-      #   uses: docker/build-push-action@v3.2.0
-      #   with:
-      #     context: cuda-12.1.0-anaconda-2023-03-py310-b
-      #     push: true
-      #     tags: mmcky/quantecon-lecture-python:cuda-12.1.0-anaconda-2023-03-py310-b
-
-      # Upgrade quantecon-book-theme==0.5.1
-      # - name: Build & Push (cuda-12.1.0-anaconda-2023-03-py310-c)
-      #   uses: docker/build-push-action@v3.2.0
-      #   with:
-      #     context: cuda-12.1.0-anaconda-2023-03-py310-c
-      #     push: true
-      #     tags: mmcky/quantecon-lecture-python:cuda-12.1.0-anaconda-2023-03-py310-c
-
-      - name: Create more disk space
+        uses: actions/checkout@v4
+      - name: Create more disk space on Ubuntu
         run: sudo rm -rf /usr/share/dotnet && sudo rm -rf /opt/ghc && sudo rm -rf "/usr/local/share/boost" && sudo rm -rf "$AGENT_TOOLSDIRECTORY"
-      
-      # # Upgrade quantecon-book-theme==0.5.3 
-      # - name: Build & Push (cuda-12.1.0-anaconda-2023-03-py310-d)
-      #   uses: docker/build-push-action@v3.2.0
-      #   with:
-      #     context: cuda-12.1.0-anaconda-2023-03-py310-d
-      #     push: true
-      #     tags: mmcky/quantecon-lecture-python:cuda-12.1.0-anaconda-2023-03-py310-d
-
-      # - name: Build & Push (cuda-12.1.0-anaconda-2023-07-py310)
-      #   uses: docker/build-push-action@v3.2.0
-      #   with:
-      #     context: cuda-12.1.0-anaconda-2023-07-py310
-      #     push: true
-      #     tags: mmcky/quantecon-lecture-python:cuda-12.1.0-anaconda-2023-07-py310
-
-      # - name: Build & Push (cuda-12.1.0-anaconda-2023-07-py310-b)
-      #   uses: docker/build-push-action@v3.2.0
-      #   with:
-      #     context: cuda-12.1.0-anaconda-2023-07-py310-b
-      #     push: true
-      #     tags: mmcky/quantecon-lecture-python:cuda-12.1.0-anaconda-2023-07-py310-b
-
-      # - name: Build & Push (cuda-12.1.0-anaconda-2023-09-py311)
-      #   uses: docker/build-push-action@v3.2.0
-      #   with:
-      #     context: cuda-12.1.0-anaconda-2023-09-py311
-      #     push: true
-      #     tags: mmcky/quantecon-lecture-python:cuda-12.1.0-anaconda-2023-09-py311
-
-      # - name: Build & Push (cuda-12.1.0-anaconda-2023-09-py311-b)
-      #   uses: docker/build-push-action@v3.2.0
-      #   with:
-      #     context: cuda-12.1.0-anaconda-2023-09-py311-b
-      #     push: true
-      #     tags: mmcky/quantecon-lecture-python:cuda-12.1.0-anaconda-2023-09-py311-b
-
-      # - name: Build & Push (cuda-12.1.0-anaconda-2023-09-py311-c)
-      #   uses: docker/build-push-action@v3.2.0
-      #   with:
-      #     context: cuda-12.1.0-anaconda-2023-09-py311-c
-      #     push: true
-      #     tags: mmcky/quantecon-lecture-python:cuda-12.1.0-anaconda-2023-09-py311-c
-
-      # - name: Build & Push (cuda-12.1.0-anaconda-2023-09-py311-d)
-      #   uses: docker/build-push-action@v3.2.0
-      #   with:
-      #     context: cuda-12.1.0-anaconda-2023-09-py311-d
-      #     push: true
-      #     tags: mmcky/quantecon-lecture-python:cuda-12.1.0-anaconda-2023-09-py311-d
-
-      # - name: Build & Push (cuda-12.3.1-anaconda-2023-09-py311)
-      #   uses: docker/build-push-action@v3.2.0
-      #   with:
-      #     context: cuda-12.3.1-anaconda-2023-09-py311
-      #     push: true
-      #     tags: mmcky/quantecon-lecture-python:cuda-12.3.1-anaconda-2023-09-py311
-
-      - name: Build & Push (cuda-12.3.1-anaconda-2024-02-py311)
-        uses: docker/build-push-action@v3.2.0
-        with:
-          context: cuda-12.3.1-anaconda-2024-02-py311
-          push: true
-          tags: mmcky/quantecon-lecture-python:cuda-12.3.1-anaconda-2024-02-py311
-
-      # - name: Build & Push (cuda-12.1.0-anaconda-2024-02-py311)
-      #   uses: docker/build-push-action@v3.2.0
-      #   with:
-      #     context: cuda-12.1.0-anaconda-2024-02-py311
-      #     push: true
-      #     tags: mmcky/quantecon-lecture-python:cuda-12.1.0-anaconda-2024-02-py311
+      - name: Build image
+        run: | 
+          cd ${{ env.TAG }}
+          docker build -t ghcr.io/quantecon/${{ env.IMAGE_NAME }}:${{ env.TAG }} .
+      - name: Log in to registr y
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+      - name: Build & Push Container
+        run: |
+          docker push ghcr.io/quantecon/${{ env.IMAGE_NAME }}:${{ env.TAG }}
