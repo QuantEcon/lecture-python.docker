@@ -6,7 +6,7 @@ on:
 
 env: 
   IMAGE_NAME: lecture-python-container
-  TAG: cuda-12.6.0-anaconda-2024-10-py312-b
+  TAG: cuda-12.8.0-anaconda-2024-10-py312
 
 jobs:
   push_to_registry:
