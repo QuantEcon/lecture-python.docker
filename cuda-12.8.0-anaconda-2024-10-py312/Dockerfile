@@ -41,7 +41,7 @@ ENV PATH /opt/conda/envs/quantecon/bin:$PATH
 ENV CONDA_DEFAULT_ENV quantecon
 
 # Install JAX
-# RUN nvcc --version (not installed in runtime version)
+RUN nvcc --version
 RUN pip install "numpyro[cuda]" -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
 # Note: always install jax[cuda] last to ensure proper CUDA+CUDANN version linking
 RUN pip install --upgrade "jax[cuda12_pip]" -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
